@@ -1,0 +1,32 @@
+# Переменные окружения
+.env
+*.env
+
+# Загруженные файлы пользователей
+data/
+
+# Бинарные файлы
+minicloud
+*.exe
+
+# Go специфичные
+*.test
+*.out
+vendor/
+
+# Логи
+*.log
+
+# IDE файлы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS файлы
+.DS_Store
+Thumbs.db
+
+# Временные файлы
+*.tmp
+*~
