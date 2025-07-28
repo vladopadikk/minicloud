@@ -237,3 +237,22 @@ curl -X GET http://localhost:8080/files \
 curl -X DELETE "http://localhost:8080/delete?filename=example.txt" \
      -H "Authorization: your-token-here"
 ```
+
+## Безопасность
+
+- Хеширование паролей с использованием bcrypt
+- Сессии с ограниченным временем жизни (24 часа)
+- Автоматическая очистка истекших сессий каждый час
+
+## Ограничения
+
+- Максимальный размер загружаемого файла: 10 МБ
+- Время жизни сессии: 24 часа
+- Один активный токен на пользователя
+
+## Зависимости
+
+- `github.com/google/uuid` — генерация UUID
+- `github.com/lib/pq` — PostgreSQL драйвер
+- `golang.org/x/crypto` — bcrypt
+- `github.com/joho/godotenv` — загрузка переменных окружения
