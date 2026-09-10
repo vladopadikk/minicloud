@@ -7,16 +7,16 @@ import (
 
 func AuthMiddleware(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		authHeader := r.Header.Get("Authorization")
+		authHeader := r.Header.Get("Set-Cookie")
 		if authHeader == "" {
-			http.Error(w, "Отсутствует заголовок Authorization", http.StatusUnauthorized)
+			http.Error(w, "Отсутствует заголовок Set-Cookie", http.StatusUnauthorized)
 			return
 		}
 
 		username, err := storage.GetUsernameByToken(authHeader)
 
 		if err != nil {
-			http.Error(w, "Неверный или истёкший токен", http.StatusUnauthorized)
+			http.Error(w, "Неверный или истёкший идентификатор сессии", http.StatusUnauthorized)
 			return
 		}
 

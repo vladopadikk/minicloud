@@ -44,13 +44,13 @@ func Login(req model.User) (string, model.User, error) {
 		return "", model.User{}, errors.New("invalid password")
 	}
 
-	token := uuid.NewString()
+	sessionID := uuid.NewString()
 	lifeTime := time.Now().Add(24 * time.Hour)
 
-	err = storage.SaveSession(user.ID, token, lifeTime)
+	err = storage.SaveSession(user.ID, sessionID, lifeTime)
 	if err != nil {
 		return "", model.User{}, fmt.Errorf("failed to save session: %w", err)
 	}
 
-	return token, user, nil
+	return sessionID, user, nil
 }

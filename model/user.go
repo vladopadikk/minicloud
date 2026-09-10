@@ -1,10 +1,10 @@
 package model
 
 type Response struct {
-	Username string `json:"username"`
-	Msg      string `json:"msg"`
-	Token    string `json:"token"`
-	Status   int    `json:"status"`
+	Username  string `json:"username"`
+	Msg       string `json:"msg"`
+	SessionID string `json:"session-id"`
+	Status    int    `json:"status"`
 }
 
 type ErrorResponse struct {

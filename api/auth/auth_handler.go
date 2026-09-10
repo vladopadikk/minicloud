@@ -47,7 +47,7 @@ func LoginHandler() http.HandlerFunc {
 			return
 		}
 
-		token, user, err := service.Login(req)
+		sessionID, user, err := service.Login(req)
 		if err != nil {
 			utils.WriteJSONError(w, http.StatusUnauthorized, err.Error())
 			return
@@ -57,10 +57,10 @@ func LoginHandler() http.HandlerFunc {
 		w.WriteHeader(http.StatusOK)
 
 		json.NewEncoder(w).Encode(model.Response{
-			Username: user.Username,
-			Msg:      "Логин успешен",
-			Token:    token,
-			Status:   http.StatusOK,
+			Username:  user.Username,
+			Msg:       "Логин успешен",
+			SessionID: sessionID,
+			Status:    http.StatusOK,
 		})
 	}
 }
